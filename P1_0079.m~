@@ -1,0 +1,26 @@
+clear
+clc
+
+%data
+MName = {'Concrete' 'Wood' 'Adobe'};
+MData = [14 32 93000 900 5 4;
+    21 55 110000 800 13 10;
+    17 45 61000 600 5 5];
+MData(:,1) = MData(:,1)/12; %(ft)
+Concrete = MData(:,1);
+Wood = MData(:,2);
+Adobe = MData(:,3);
+
+%menu
+material = menu('Choose Material', MName)
+
+%calculations
+WSA = 3000; %(ft^2)
+MCFT = MData(:,1) * WSA; %(ft^3)
+MC = MCFT * MData(:,2); %($)
+
+%plot
+figure('Color')
+%labels
+
+%legend
