@@ -1,0 +1,36 @@
+clear
+clc
+
+%data
+MData = {'Concrete',14,32,93000,900,5,4;
+    'Wood',21,55,110000,800,13,10;
+    'Adobe',17,45,61000,600,5,5};
+
+%menu
+material = menu('Choose Material','Concrete','Wood','Adobe');
+r=(MData{material,2}/12); %(ft)
+
+
+%calculations
+WSA = 3000; %(ft^2)
+MCFT = r * WSA; %(ft^3)
+MC = MCFT * MData{material,3}; %($)
+mcm=(MData{material,4});
+w=(MData{material,5}*MData{material,6}*MData{material,7});
+fixedcost=MC+mcm+w;
+
+
+ec=input('Energy cost [$/week]:');
+lc=input('Labor cost [$/week]:');
+mc=input('Maintenance cost [$/week]:');
+lf=input('Landfill cost [$/week]:');
+op_time=input('Number of weeks per year the zoo will operate:');
+y=input('Number of years the analysis should include:');
+price=input('Price of admission per person [$/person]:');
+people=input('Number of people per week that will visit the zoo:');
+donations=input('Expected donations per week [$/week]:');
+cost=ec+lc+mc+lf;
+cost=cost*op_time;
+revenue=price*people;
+revenue=revenue+donations;
+revenue=revenue*op_time;
